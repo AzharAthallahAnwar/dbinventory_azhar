@@ -1,0 +1,19 @@
+CREATE DATABASE dbinventory_azhar_xipplg4
+
+CREATE TABLE barang 
+(
+id_barang varchar(50) PRIMARY KEY,
+id_jenis varchar(50),
+nama_barang varchar(50),
+harga_barang int,
+stok_barang int),
+expired date;
+
+
+ALTER TABLE barang ADD FOREIGN KEY(id_jenis) REFERENCES jenis_barang(id_jenis) 
+ON DELETE CASCADE
+ON UPDATE CASCADE 
+
+INSERT INTO barang VALUES 
+("j1","makanan"),
+("j2","minuman")
