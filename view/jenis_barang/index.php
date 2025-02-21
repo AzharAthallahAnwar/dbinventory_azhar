@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class ="container">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="../barang">Barang</a>
@@ -49,22 +49,20 @@
     </div>
   </div>
 </nav>
-<h1>tabel barang</h1>
-    <a href="tambah.php" class="btn btn-primary">tambah barang baru</a>
+<h1>tabel jenis barang</h1>
+    <a href="tambah.php" class="btn btn-primary">tambah jenis barang baru</a>
+    
     <table class="table table-dark table-striped-columns">
         <tr>
              <td>No.</td>
-            <td>ID Barang</td>
             <td>ID Jenis</td>
             <td>Nama Barang</td>
-            <td>Harga Barang</td>
-            <td>Stok barang</td>
-            <td>expired</td>
             <td>Aksi</td>
+
         </tr>
         <?php
         include '../../config/koneksi.php';
-        $query = mysqli_query($conn, "SELECT * FROM barang");
+        $query = mysqli_query($conn, "SELECT * FROM jenis_barang");
         $no=1;
         if(mysqli_num_rows($query)){
             echo "Data ada";
@@ -72,17 +70,10 @@
                 ?>
                 <tr>
                     <td><?php echo $no ?></td>
-                    <td><?php echo $result['id_barang'] ?></td>
                     <td><?php echo $result['id_jenis'] ?></td>
-                    <td><?php echo $result['nama_barang'] ?></td>
-                    <td><?php echo $result['harga_barang'] ?></td>
-                    <td><?php echo $result['stok_barang'] ?></td>
-                    <td><?php echo $result['expired'] ?></td>
+                    <td><?php echo $result['nama_jenis'] ?></td>
                     <td>
-                        <a href="view_edit.php?id_barang=<?php echo $result ['id_barang']?>" class="btn btn-warning">Edit |</a>
-                        <a href="hapus.php?id_barang=<?php echo $result['id_barang']?>"
-                        onclick="return confirm('kamu yakin mau hapus?')"
-                        class="btn btn-danger">Hapus</a>
+                        <a href="view_edit.php?id_jenis=<?php echo $result ['id_jenis']?>" class="btn btn-warning">Edit |</a>
                     </td>
                 </tr>
                 <?php
@@ -94,7 +85,6 @@
         ?>
     </table>
     </div>
-
 </body>
 </html>
 <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>data barang</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <title>Document</title>
 </head>
 <body>
     <div class ="container">
@@ -44,42 +44,22 @@
     </div>
   </div>
 </nav>
-<h1>tabel jenis barang</h1>
-    <a href="tambah1.php" class="btn btn-primary">tambah jenis barang baru</a>
-    
-    <table class="table table-dark table-striped-columns">
-        <tr>
-             <td>No.</td>
-            <td>ID Jenis</td>
-            <td>Nama Barang</td>
-            <td>Aksi</td>
+<h1>tambah jenis barang baru</h1>
+    <form action="simpan.php" method="POST">
+    <div class="mb-3">
+        <label for="" class="form-label">ID jenis</label>
+        <input type="text" name="id_jenis" class="form-control">
+        </div>
+        <br>
 
-        </tr>
-        <?php
-        include '../../config/koneksi.php';
-        $query = mysqli_query($conn, "SELECT * FROM jenis_barang");
-        $no=1;
-        if(mysqli_num_rows($query)){
-            echo "Data ada";
-            while($result=mysqli_fetch_assoc($query)){
-                ?>
-                <tr>
-                    <td><?php echo $no ?></td>
-                    <td><?php echo $result['id_jenis'] ?></td>
-                    <td><?php echo $result['nama_jenis'] ?></td>
-                    <td>
-                        <a href="" class="btn btn-warning">Edit |</a>
-                        <a href="" class="btn btn-danger">Hapus</a>
-                    </td>
-                </tr>
-                <?php
-                $no++;
-            }
-        }else{
-            echo "Data kosong";
-        }
-        ?>
-    </table>
+        <div class="mb-3">
+        <label for="" class="form-label">Nama jenis</label>
+        <input type="text" name="nama_jenis" class="form-control">
+        </div>
+        <br>
+
+        <button type="submit"  class="btn btn-primary">Simpan</button>
+    </form>
     </div>
 </body>
 </html>

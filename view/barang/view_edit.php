@@ -7,8 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <div class ="container">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<div class ="container">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="../barang">Barang</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,21 +44,40 @@
     </div>
   </div>
 </nav>
-<h1>tambah jenis barang baru</h1>
-    <form action="simpan1.php" method="POST">
-    <div class="mb-3">
-        <label for="" class="form-label">ID jenis</label>
-        <input type="text" name="id_jenis" class="form-control">
+<h1>tambah barang baru</h1>
+<?php 
+$id_barang=$_GET['id_barang'];
+include '../../config/koneksi.php';
+$query=mysqli_query($conn, "SELECT * FROM barang WHERE id_barang='$id_barang'");
+$result=mysqli_fetch_array($query);
+?>
+    <form action="proses_edit.php?id_barang=<?php echo $result['id_barang']?>" method="post">
+        
+        <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Nama barang</label>
+        <input type="text" name="nama_barang" class="form-control" value="<?php echo $result['nama_barang']?>">
         </div>
         <br>
 
         <div class="mb-3">
-        <label for="" class="form-label">Nama jenis</label>
-        <input type="text" name="nama_jenis" class="form-control">
+        <label for="exampleInputPassword1" class="form-label">Harga barang</label>
+        <input type="number" name="harga_barang" class="form-control" value="<?php echo $result['harga_barang']?>">
         </div>
         <br>
 
-        <button type="submit"  class="btn btn-primary">Simpan</button>
+        <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Stok barang</label>
+        <input type="number" name="stok_barang" class="form-control" value="<?php echo $result['stok_barang']?>">
+        </div>
+        <br>
+
+        <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">expired barang</label>
+        <input type="date" name="expired" class="form-control" value="<?php echo $result['expired']?>">
+        </div>
+        <br>
+
+        <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
     </div>
 </body>
